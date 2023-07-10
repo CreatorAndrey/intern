@@ -24,16 +24,18 @@ def make_video_from_text(text, time_video, fps, red, green, blue):
     text_width -= 100
     print(text_width)
     print(total_frames)
-    dx = text_width / total_frames
+    dx = abs(text_width) / total_frames
     dx = int(-1 * dx // 1 * -1)
     print(dx)
     x = 0
+    k = 0
     for frame_number in range(total_frames):
         # Очищаем изображение
         image.fill(255)
         # image = np.full((100, 100, 3), (255, 0, 0), np.uint8)
         x = x - dx
         y = (100 + text_height) // 2
+
         # Рисуем текст на изображении
         cv2.putText(image, text, (x, y), font, font_scale, font_color, 1, line_type)
 
@@ -42,3 +44,5 @@ def make_video_from_text(text, time_video, fps, red, green, blue):
 
     # Закрываем объект записи видео
     video_writer.release()
+
+make_video_from_text('12;l,;l,',5,25,100,100,100)

@@ -22,7 +22,7 @@ def make_video_from_text(text, time_video, fps, red, green, blue):
     # Генерируем видео
     text_width, text_height = cv2.getTextSize(text, font, font_scale, 1)[0]
     text_width -= 100
-    dx = text_width / total_frames
+    dx = abs(text_width) / total_frames
     dx = int(-1 * dx // 1 * -1)
     x = 0
     for frame_number in range(total_frames):

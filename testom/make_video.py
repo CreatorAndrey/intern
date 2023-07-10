@@ -21,12 +21,15 @@ def make_video_from_text(text, time_video, fps, red, green, blue):
 
     # Генерируем видео
     text_width, text_height = cv2.getTextSize(text, font, font_scale, 1)[0]
+    text_width -= 100
     dx = text_width / total_frames
+    dx = int(-1 * dx // 1 * -1)
+    x = 0
     for frame_number in range(total_frames):
         # Очищаем изображение
         image.fill(255)
         # image = np.full((100, 100, 3), (255, 0, 0), np.uint8)
-        x = 0 - frame_number
+        x = x - dx
         y = (100 + text_height) // 2
 
         # Рисуем текст на изображении
